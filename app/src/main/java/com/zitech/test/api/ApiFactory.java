@@ -168,6 +168,7 @@ public class ApiFactory {
         if (context != null) {
             Dialog dialog = createLoadingDialog(context, request, true);
             dialog.show();
+            //这里request引用dialog的设计有些许不当，日后改之。
             request.progressDialog = dialog;
         }
         FastVolley.getInstance().execute(request);
