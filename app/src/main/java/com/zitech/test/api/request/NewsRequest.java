@@ -4,7 +4,7 @@ package com.zitech.test.api.request;
 import org.fans.http.frame.packet.ApiResponse;
 
 /**
- * Created by lu on 2016/4/12
+ * Created by lu on 2016/3/12
  * http://api.iclient.ifeng.com/ClientNews?id=KJ123,FOCUSKJ123&page=1&gv=5.1.1&av=0&proid=ifengnews&os=ios_9.3.1.
  */
 public class NewsRequest extends Request implements PagedRequest {

@@ -1,7 +1,7 @@
 package com.zitech.test.api.entity;
 
 /**
- * Created by srh on 2015/11/6.
+ * Created by lu on 2016/3/31.
  */
 public class ApkUpdateEntity {
     private int id;
