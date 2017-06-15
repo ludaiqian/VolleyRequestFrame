@@ -9,7 +9,7 @@ import com.zitech.framework.utils.Logger;
 
 /**
  * 实体请求构造器
- * Created by lu on 2015/7/19.
+ * Created by lu on 2015/3/19.
  */
 public class RequestBuilder {
     private HttpParams params;

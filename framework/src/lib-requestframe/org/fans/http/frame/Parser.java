@@ -1,7 +1,7 @@
 package org.fans.http.frame;
 
 /**
- * Created by lu on 2015/7/20.
+ * Created by lu on 2014/9/17.
  */
 public interface Parser<T> {
 

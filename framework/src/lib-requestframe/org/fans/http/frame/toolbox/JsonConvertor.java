@@ -3,12 +3,11 @@ package org.fans.http.frame.toolbox;
 import org.fans.http.frame.Convertor;
 import org.fans.http.frame.HttpParams;
 import org.fans.http.frame.packet.ApiRequest;
-import org.fans.http.frame.toolbox.JsonSerializer;
 
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by lu on 2016/4/20.
+ * Created by lu on 2015/6/20.
  */
 public class JsonConvertor implements Convertor {
 
