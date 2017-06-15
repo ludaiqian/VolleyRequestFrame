@@ -22,6 +22,7 @@ import org.fans.http.frame.toolbox.packet.ApiResponse;
 import java.util.List;
 
 /**
+ * 分页加载示例，任意多个分页请求共用统一的DataSource
  * <a herf="https://github.com/LuckyJayce/MVCHelper"/>
  * <p>
  * 配置样式查看以下代码
@@ -41,6 +42,7 @@ public class LoadMoreSample1Activity extends AppCompatActivity {
         mvcHelper = new MVCSwipeRefreshHelper<List<News>>(swipeRefreshLayout);
         NewsRequest request = new NewsRequest();
         request.setApiMethod(ZitechApi.NEWS_LIST);
+        //关键点:设置List提取策略
         ListFetcher<News> fetcher = new ListFetcher<News>() {
             @Override
             public List<News> fetch(ApiResponse<?> response) {

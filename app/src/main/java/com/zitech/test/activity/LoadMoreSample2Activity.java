@@ -16,7 +16,9 @@ import com.zitech.test.api.response.News;
 import com.zitech.test.widget.MVCSwipeRefreshHelper;
 
 import java.util.List;
-
+/**
+ *分页加载示例，单独编写的DataSource
+ */
 public class LoadMoreSample2Activity extends AppCompatActivity {
 
     private MVCHelper<List<News>> mvcHelper;
