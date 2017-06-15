@@ -15,7 +15,7 @@ import org.fans.http.frame.toolbox.FastVolley;
 import java.util.List;
 
 /**
- * 新闻DataSouce示例
+ * 单独编写的新闻DataSouce示例
  * Created by lu on 2016/3/12.
  */
 public class NewsDataSource implements IAsyncDataSource<List<News>> {

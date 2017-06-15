@@ -14,7 +14,7 @@ import org.fans.http.frame.toolbox.FastVolley;
 import java.util.List;
 
 /**
- * 统一封装的DataSource示例
+ * 统一封装的DataSource示例，所有分页请求皆可使用此DataSource
  * Created by lu on 2016/3/12.
  */
 public class DataSource<T> implements IAsyncDataSource<List<T>> {
