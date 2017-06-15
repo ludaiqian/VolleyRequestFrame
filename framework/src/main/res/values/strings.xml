@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">DateFeeling</string>
+
+    <!--  -->
+    <string name="in_loading">加载中...</string>
+    <string name="network_unavailable">网络失联中，么么哒</string>
+    <string name="request_failed">服务器不给力了,过一会儿再试试。</string>
+    <string name="minutes" msgid="6115838729146292526">"<xliff:g id="MINUTES">%s</xliff:g> 分钟"</string>
+    <!--  -->
+
+
+    <string name="cancel">取消</string>
+    <string name="edit">编辑</string>
+    <string name="finish">完成</string>
+    <string name="photo_crop_loading">正在加载图片&#8230;</string>
+
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--正在加载状态显示区域-->
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="@dimen/h54"
+        android:layout_height="@dimen/h54"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/progress_indeterminate_drawable" />
+    <!--加载数据失败状态显示区域-->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/retry_btn"
+            style="@style/CommonButton"
+            android:layout_width="@dimen/w293"
+            android:layout_height="@dimen/h80"
+            android:layout_marginBottom="@dimen/h18"
+            android:text="刷新"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/error_prompt_view"
+            android:textColor="@color/text_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="么么哒,你的网速不太给力哦" />
+    </LinearLayout>
+    <!--空数据状态显示区域-->
+    <TextView
+        android:id="@+id/no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/w100"
+        android:drawablePadding="@dimen/w20"
+        android:text="暂无数据"
+        android:gravity="center"
+        android:textColor="@color/text_hint"
+        android:textSize="16sp" />
+
+</merge>
