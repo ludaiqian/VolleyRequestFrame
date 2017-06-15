@@ -11,6 +11,9 @@ import android.widget.ViewAnimator;
 
 import com.zitech.test.R;
 
+/**
+ * 提高性能可用ViewStub优化之
+ */
 public class ContentViewSwitcher extends ViewAnimator {
 
     public static final int LOADING = 0;

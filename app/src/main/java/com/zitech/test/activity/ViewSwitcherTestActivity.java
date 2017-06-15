@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.zitech.test.R;
 import com.zitech.test.widget.ContentViewSwitcher;
 
-public class ViewHolderTestActivity extends AppCompatActivity {
+public class ViewSwitcherTestActivity extends AppCompatActivity {
     private Handler hander = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -39,7 +39,7 @@ public class ViewHolderTestActivity extends AppCompatActivity {
 //        mHolder.showEmpty();
     }
     public static void launch(Context context) {
-        Intent intent = new Intent(context, ViewHolderTestActivity.class);
+        Intent intent = new Intent(context, ViewSwitcherTestActivity.class);
         context.startActivity(intent);
     }
 }

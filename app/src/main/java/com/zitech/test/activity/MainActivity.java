@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 LoadMoreSample2Activity.launch(this);
                 break;
             case R.id.btn_view_holder_test:
-                ViewHolderTestActivity.launch(this);
+                ViewSwitcherTestActivity.launch(this);
                 break;
             default:
                 break;

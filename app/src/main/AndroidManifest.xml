@@ -74,7 +74,7 @@
         <activity android:name=".activity.DownloadActivity"></activity>
         <activity android:name=".activity.DownloadListActivity"></activity>
         <activity android:name=".activity.LoadMoreSample1Activity"></activity>
-        <activity android:name=".activity.ViewHolderTestActivity"></activity>
+        <activity android:name=".activity.ViewSwitcherTestActivity"></activity>
         <activity android:name=".activity.LoadMoreSample2Activity"></activity>
     </application>
 
