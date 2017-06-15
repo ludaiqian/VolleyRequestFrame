@@ -111,25 +111,23 @@ public class ApiFactory {
 
 
     public static <T extends ApiResponse> void execute(Object target, String url, int method, HttpParams params, String uniqueKey, Parser parser, final ApiResponseListener<T> responseListener) {
-        Context context = null;
-        Activity tempATarget = null;
-        Fragment tempFTarget = null;
-        android.app.Fragment tempFTarget1 = null;
+        Activity hostActivity = null;
+        Fragment hostSupportFragment = null;
+        android.app.Fragment hostFragment = null;
         if (target instanceof Activity) {
-            tempATarget = (Activity) target;
-            context = tempATarget;
+            hostActivity = (Activity) target;
         } else if (target instanceof Fragment) {
-            tempFTarget = (Fragment) target;
-            context = tempFTarget.getActivity();
+            hostSupportFragment = (Fragment) target;
+            hostActivity= hostSupportFragment.getActivity();
         } else if (VersionUtils.isHoneycomb()) {
             if (target instanceof android.app.Fragment) {
-                tempFTarget1 = (android.app.Fragment) target;
-                context = tempFTarget1.getActivity();
+                hostFragment = (android.app.Fragment) target;
+                hostActivity = hostFragment.getActivity();
             }
         }
-        final Activity aTarget = tempATarget;
-        final Fragment fTarget = tempFTarget;
-        final Object fTarget1 = tempFTarget1;
+        final Activity aTarget = hostActivity;
+        final Fragment fTargetOfSupport = hostSupportFragment;
+        final Object fTarget = hostFragment;
         PojoRequest httpRequest = new RequestBuilder()
                 .url(url)//Url
                 .contentType("application/x-www-form-urlencoded")//ContenType
@@ -142,14 +140,10 @@ public class ApiFactory {
                     public void onResponse(T response) {
                         boolean activityDestoried = false;
                         if (aTarget != null) {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                                activityDestoried = aTarget.isDestroyed();
-                            } else {
-                                activityDestoried = aTarget.isFinishing();
-                            }
+                            activityDestoried = aTarget.isFinishing();
                         }
                         if (response.isSuccess()) {
-                            boolean destoried = activityDestoried || (fTarget != null && !fTarget.isAdded()) || (fTarget1 != null && !((android.app.Fragment)fTarget1).isAdded());
+                            boolean destoried = activityDestoried || (fTargetOfSupport != null && !fTargetOfSupport.isAdded()) || (fTarget != null && !((android.app.Fragment) fTarget).isAdded());
                             if (destoried) {
                                 responseListener.onResponseAfterDestoried(response);
                             } else {
@@ -167,7 +161,7 @@ public class ApiFactory {
                     }
                 })
                 .create();
-        execute(context, httpRequest);
+        execute(hostActivity, httpRequest);
     }
 
     public static void execute(Context context, PojoRequest request) {
