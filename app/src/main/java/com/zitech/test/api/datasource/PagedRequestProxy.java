@@ -2,9 +2,9 @@ package com.zitech.test.api.datasource;
 
 import com.zitech.test.api.request.PagedRequest;
 
-import org.fans.http.frame.packet.ApiResponse;
+import org.fans.http.frame.toolbox.packet.ApiResponse;
 
-public class PagedRequestProxy implements PagedRequest {
+public class PagedRequestProxy extends PagedRequest {
     private PagedRequest request;
     private int pageCount = 0;
     public static final int DEFAULT_PAGE_SIZE = 20;
@@ -76,9 +76,7 @@ public class PagedRequestProxy implements PagedRequest {
         return this.request;
     }
 
-    public String getMethod() {
-        return this.request.getMethod();
-    }
+
 
     public ApiResponse parse(String result) {
         return this.request.parse(result);

@@ -1,8 +1,8 @@
 package com.zitech.test.api.request;
 
-import org.fans.http.frame.ResponseTypeProvider;
-import org.fans.http.frame.packet.ApiRequest;
-import org.fans.http.frame.packet.ApiResponse;
+import org.fans.http.frame.toolbox.ResponseTypeProvider;
+import org.fans.http.frame.toolbox.packet.ApiRequest;
+import org.fans.http.frame.toolbox.packet.ApiResponse;
 import org.fans.http.frame.toolbox.JsonSerializer;
 
 import java.lang.reflect.Type;
@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 public class Request implements ApiRequest {
 	// //
 	// @Expose(serialize = false)
-	private transient String method;
+	private transient String apiMethod;
 	// @Expose(serialize = false)
 	private transient String cookie;
 
@@ -19,13 +19,12 @@ public class Request implements ApiRequest {
 		cookie = "test";
 	}
 
-	public void setMethod(String method) {
-		this.method = method;
+	public String getApiMethod() {
+		return apiMethod;
 	}
 
-	@Override
-	public String getMethod() {
-		return method;
+	public void setApiMethod(String apiMethod) {
+		this.apiMethod = apiMethod;
 	}
 
 	public String getCookie() {
@@ -35,7 +34,7 @@ public class Request implements ApiRequest {
 
 	@Override
 	public ApiResponse parse(String result) {
-		Type type = ResponseTypeProvider.getInstance().getApiResponseType(getMethod());
+		Type type = ResponseTypeProvider.getInstance().getApiResponseType(getApiMethod());
 		return (ApiResponse) JsonSerializer.DEFAULT.deserialize(result, type);
 	}
 

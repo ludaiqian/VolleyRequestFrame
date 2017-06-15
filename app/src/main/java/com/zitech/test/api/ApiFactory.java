@@ -1,6 +1,5 @@
 package com.zitech.test.api;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -24,14 +23,14 @@ import com.zitech.test.api.response.NewsList;
 import com.zitech.test.api.response.PagedResponse;
 import com.zitech.test.api.response.TrainingList;
 
-import org.fans.http.frame.FastVolley;
+import org.fans.http.frame.toolbox.FastVolley;
 import org.fans.http.frame.HttpParams;
 import org.fans.http.frame.Parser;
 import org.fans.http.frame.PojoRequest;
 import org.fans.http.frame.RequestBuilder;
-import org.fans.http.frame.ResponseTypeProvider;
-import org.fans.http.frame.packet.ApiRequest;
-import org.fans.http.frame.packet.ApiResponse;
+import org.fans.http.frame.toolbox.ResponseTypeProvider;
+import org.fans.http.frame.toolbox.packet.ApiRequest;
+import org.fans.http.frame.toolbox.packet.ApiResponse;
 import org.fans.http.frame.toolbox.JsonSerializer;
 import org.fans.http.frame.toolbox.ParamsConvertor;
 
@@ -54,7 +53,7 @@ public class ApiFactory {
      */
     public static final void getChapterDetail(Object target, int subjectId, ApiResponseListener<ChapterDetail> respsponseListener) {
         ChapterDetailRequest request = new ChapterDetailRequest();
-        request.setMethod(ZitechApi.CHAPTER_DETAIL);
+        request.setApiMethod(ZitechApi.CHAPTER_DETAIL);
         request.setSubjectId(subjectId);
         execute(target, request, respsponseListener);
     }
@@ -67,7 +66,7 @@ public class ApiFactory {
      */
     public static final void isAccountOnline(Object target, ApiResponseListener<AccountOnline> respsponseListener) {
         Request request = new Request();
-        request.setMethod(ZitechApi.ACCOUNT_ONLINE_TEST);
+        request.setApiMethod(ZitechApi.ACCOUNT_ONLINE_TEST);
         execute(target, request, respsponseListener);
     }
 
@@ -92,9 +91,9 @@ public class ApiFactory {
      */
     public static final NewsRequest getNewsList(int page, ApiResponseListener<NewsList> responseListener) {
         NewsRequest request = new NewsRequest();
-        request.setMethod(ZitechApi.NEWS_LIST);
+        request.setApiMethod(ZitechApi.NEWS_LIST);
         request.setPage(page);
-        execute(null, "http://api.iclient.ifeng.com/" + request.getMethod(), Method.GET, convert(request), request.toString(), request, responseListener);
+        execute(null, "http://api.iclient.ifeng.com/" + request.getApiMethod(), Method.GET, convert(request), request.toString(), request, responseListener);
         return request;
     }
 
@@ -102,12 +101,12 @@ public class ApiFactory {
      * 3	统一的分页请求
      */
     public static final void getPagedResponse(PagedRequest request, ApiResponseListener<? extends PagedResponse> responseListener) {
-        execute(null, "http://api.iclient.ifeng.com/" + request.getMethod(), Method.GET, convert(request), request.toString(), request, responseListener);
+        execute(null, "http://api.iclient.ifeng.com/" + request.getApiMethod(), Method.GET, convert(request), request.toString(), request, responseListener);
     }
 
 
-    public static <T extends ApiResponse> void execute(Object target, ApiRequest request, final ApiResponseListener<T> responseListener) {
-        execute(target, Constants.URL + request.getMethod(), Method.POST, convert(request), request.toString(), request, responseListener);
+    public static <T extends ApiResponse> void execute(Object target, Request request, final ApiResponseListener<T> responseListener) {
+        execute(target, Constants.URL + request.getApiMethod(), Method.POST, convert(request), request.toString(), request, responseListener);
     }
 
 
@@ -220,36 +219,4 @@ public class ApiFactory {
         }
     }
 
-//-----------------------------------------NetworkActivity方式参考----------------------------------------
-    @Deprecated
-    public static <T extends ApiResponse> void execute(Object target, final ApiRequest request, final TaskResultPicker responseListener) {
-        execute(target, Constants.URL + request.getMethod(), Method.POST, convert(request), request.toString(), request, new ApiResponseListener<ApiResponse>() {
-            @Override
-            public void onResponseInActive(ApiResponse response) {
-                responseListener.doStuffWithResult(request, response);
-            }
-
-            @Override
-            public void onResponseAfterDestoried(ApiResponse response) {
-                responseListener.doStuffWithResult(request, response);
-            }
-
-            @Override
-            public void onError(HttpError error) {
-                responseListener.onRequestFailed(request, error);
-            }
-        });
-    }
-
-    /**
-     * 代码中应该尽量避免直接对Activity的引用，所以以Activity来做监听回调不是特别合适。
-     *
-     * @author daiqian
-     */
-    @Deprecated
-    public interface TaskResultPicker {
-        void doStuffWithResult(ApiRequest request, ApiResponse<?> result);
-
-        void onRequestFailed(ApiRequest request, HttpError error);
-    }
 }

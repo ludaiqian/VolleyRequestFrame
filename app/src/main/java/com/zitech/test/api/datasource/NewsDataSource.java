@@ -10,7 +10,7 @@ import com.zitech.test.api.request.NewsRequest;
 import com.zitech.test.api.response.News;
 import com.zitech.test.api.response.NewsList;
 
-import org.fans.http.frame.FastVolley;
+import org.fans.http.frame.toolbox.FastVolley;
 
 import java.util.List;
 

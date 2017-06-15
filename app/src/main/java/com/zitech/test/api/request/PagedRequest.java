@@ -1,18 +1,16 @@
 package com.zitech.test.api.request;
 
-import org.fans.http.frame.packet.ApiRequest;
-
 /**
  * 代表一个分页请求
  * Created by lu on 2016/3/14.
  */
-public interface PagedRequest extends ApiRequest {
-    int getCurrentPage();
+public abstract class PagedRequest extends Request {
+   public abstract int getCurrentPage();
 
-    int getPageSize();
+    public abstract int getPageSize();
 
-    void setCurrentPage(int var1);
+    public abstract void setCurrentPage(int var1);
 
-    void setPageSize(int var1);
+    public abstract void setPageSize(int var1);
 
 }

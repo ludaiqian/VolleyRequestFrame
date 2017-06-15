@@ -5,7 +5,7 @@ import com.zitech.test.api.response.ChapterDetail;
 import com.zitech.test.api.response.NewsList;
 import com.zitech.test.api.response.TrainingList;
 
-import org.fans.http.frame.ResponseTypeProvider;
+import org.fans.http.frame.toolbox.ResponseTypeProvider;
 
 import java.lang.reflect.Type;
 

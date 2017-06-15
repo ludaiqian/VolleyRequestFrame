@@ -1,4 +1,4 @@
-package org.fans.http.frame.packet;
+package org.fans.http.frame.toolbox.packet;
 
 /**
  * 

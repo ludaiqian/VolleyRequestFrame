@@ -9,7 +9,7 @@ import com.zitech.test.api.ApiResponseListener;
 import com.zitech.test.api.request.PagedRequest;
 import com.zitech.test.api.response.PagedResponse;
 
-import org.fans.http.frame.FastVolley;
+import org.fans.http.frame.toolbox.FastVolley;
 
 import java.util.List;
 

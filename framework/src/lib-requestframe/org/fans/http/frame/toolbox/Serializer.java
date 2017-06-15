@@ -1,8 +1,6 @@
-package org.fans.http.frame;
+package org.fans.http.frame.toolbox;
 
 import java.lang.reflect.Type;
-
-import org.fans.http.frame.packet.ApiPacket;
 
 public interface Serializer<T> {
 

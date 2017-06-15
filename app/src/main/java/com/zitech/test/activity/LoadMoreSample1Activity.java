@@ -17,7 +17,7 @@ import com.zitech.test.api.response.News;
 import com.zitech.test.api.response.NewsList;
 import com.zitech.test.widget.MVCSwipeRefreshHelper;
 
-import org.fans.http.frame.packet.ApiResponse;
+import org.fans.http.frame.toolbox.packet.ApiResponse;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class LoadMoreSample1Activity extends AppCompatActivity {
         SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         mvcHelper = new MVCSwipeRefreshHelper<List<News>>(swipeRefreshLayout);
         NewsRequest request = new NewsRequest();
-        request.setMethod(ZitechApi.NEWS_LIST);
+        request.setApiMethod(ZitechApi.NEWS_LIST);
         ListFetcher<News> fetcher = new ListFetcher<News>() {
             @Override
             public List<News> fetch(ApiResponse<?> response) {

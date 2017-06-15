@@ -1,6 +1,6 @@
 package com.zitech.test.api.response;
 
-import org.fans.http.frame.packet.ApiResponse;
+import org.fans.http.frame.toolbox.packet.ApiResponse;
 
 public class Response implements ApiResponse<Response> {
 	private String e;

@@ -1,6 +1,4 @@
-package org.fans.http.frame.packet;
-
-import java.lang.reflect.Type;
+package org.fans.http.frame.toolbox.packet;
 
 
 /**

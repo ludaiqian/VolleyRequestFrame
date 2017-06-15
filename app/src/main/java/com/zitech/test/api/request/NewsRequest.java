@@ -1,13 +1,13 @@
 package com.zitech.test.api.request;
 
 
-import org.fans.http.frame.packet.ApiResponse;
+import org.fans.http.frame.toolbox.packet.ApiResponse;
 
 /**
  * Created by lu on 2016/3/12
  * http://api.iclient.ifeng.com/ClientNews?id=KJ123,FOCUSKJ123&page=1&gv=5.1.1&av=0&proid=ifengnews&os=ios_9.3.1.
  */
-public class NewsRequest extends Request implements PagedRequest {
+public class NewsRequest extends  PagedRequest {
     //http://api.iclient.ifeng.com/ClientNews?id=KJ123,FOCUSKJ123&page=3&gv=5.1.1&av=0&proid=ifengnews&os=ios_9.3.1
 
     private String id = "KJ123";

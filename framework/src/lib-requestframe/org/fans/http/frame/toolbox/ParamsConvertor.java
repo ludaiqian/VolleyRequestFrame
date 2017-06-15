@@ -1,9 +1,7 @@
 package org.fans.http.frame.toolbox;
 
-import org.fans.http.frame.Convertor;
 import org.fans.http.frame.HttpParams;
-import org.fans.http.frame.PacketFieldExcluder;
-import org.fans.http.frame.packet.ApiRequest;
+import org.fans.http.frame.toolbox.packet.ApiRequest;
 
 import java.lang.reflect.Field;
 

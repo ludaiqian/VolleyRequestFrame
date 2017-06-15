@@ -1,4 +1,4 @@
-package org.fans.http.frame;
+package org.fans.http.frame.toolbox;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
