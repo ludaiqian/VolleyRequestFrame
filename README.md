@@ -7,9 +7,9 @@
 
 ## 如何使用：
 
-1、对接口协议进行抽象，编写具体的请求和响应对象分别继承Request,Response
-2、在ZitechApi里面注册一下接口名称对应的返回类型
-3、在ApiFactory里添加这个接口的方法
+* 对接口协议进行抽象，编写具体的请求和响应对象分别继承Request,Response
+* 在ZitechApi里面注册一下接口名称对应的返回类型
+* 在ApiFactory里添加这个接口的方法
 
 ## 下载模块的使用：
 
