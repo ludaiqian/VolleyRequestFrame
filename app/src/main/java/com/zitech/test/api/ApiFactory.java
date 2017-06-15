@@ -37,7 +37,7 @@ import org.fans.http.frame.toolbox.ParamsConvertor;
 import java.lang.reflect.Type;
 
 /**
- * API协议工厂
+ * API协议工厂范例
  *
  * @author ludaiqian
  */

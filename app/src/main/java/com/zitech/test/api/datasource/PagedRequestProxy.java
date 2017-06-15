@@ -3,7 +3,10 @@ package com.zitech.test.api.datasource;
 import com.zitech.test.api.request.PagedRequest;
 
 import org.fans.http.frame.toolbox.packet.ApiResponse;
-
+/**
+ * 分页请求代理
+ * Created by lu on 2016/3/12.
+ */
 public class PagedRequestProxy extends PagedRequest {
     private PagedRequest request;
     private int pageCount = 0;
