@@ -23,6 +23,7 @@ import java.util.List;
  * {@link com.mozillaonline.providers.downloads.Constants#MIN_PROGRESS_TIME}
  */
 public class DownloadListActivity extends AppCompatActivity {
+
     private ListView mListView;
 
     @Override

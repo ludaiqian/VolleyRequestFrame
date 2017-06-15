@@ -29,7 +29,7 @@ import java.util.List;
  * Created by lu on 2016/3/31.
  */
 public class AppListAdapter extends ListAdapter<ApkUpdateEntity> {
-    private List<ApkEntityWrappter> apkLists;
+    private List<ApkEntityWrapper> apkLists;
     private DownloadManager manager;
     private DownloadManagerContentObserver mObserver;
     private HashMap<String, DownloadInfo> downloadApks;
@@ -49,7 +49,7 @@ public class AppListAdapter extends ListAdapter<ApkUpdateEntity> {
          */
         public void onChange(final boolean selfChange) {
             downloadApks = Utils.getDownloadingApks();
-            for (ApkEntityWrappter apk : apkLists) {
+            for (ApkEntityWrapper apk : apkLists) {
                 DownloadInfo info = downloadApks.get(apk.apkEntity.getMd5());
                 if (info != null && (info.mStatus == Downloads.STATUS_RUNNING || apk.state != info.mStatus || info.mId != apk.id)) {
                     apk.setId(info.mId);
@@ -79,13 +79,13 @@ public class AppListAdapter extends ListAdapter<ApkUpdateEntity> {
         if (convertView == null) {
             convertView = inflatView(R.layout.item_app_list);
         }
-        final ApkEntityWrappter wappter = apkLists.get(position);
+        final ApkEntityWrapper wappter = apkLists.get(position);
         render(convertView, wappter);
         return convertView;
 
     }
 
-    private void render(View convertView, final ApkEntityWrappter wappter) {
+    private void render(View convertView, final ApkEntityWrapper wappter) {
         ApkUpdateEntity entity = wappter.apkEntity;
         TextView name = ViewHolder.get(convertView, R.id.name);
         ProgressBar progress = ViewHolder.get(convertView, R.id.progress);
@@ -99,7 +99,7 @@ public class AppListAdapter extends ListAdapter<ApkUpdateEntity> {
                 } else if (wappter.isLoading()) {
                     manager.pauseDownload(wappter.getId());
                 } else {
-                    if (wappter.id != ApkEntityWrappter.NONE) {
+                    if (wappter.id != ApkEntityWrapper.NONE) {
                         manager.resumeDownload(wappter.getId());
                     } else {
                         Uri url = Uri.parse(wappter.apkEntity.getFileUrl());
@@ -135,9 +135,10 @@ public class AppListAdapter extends ListAdapter<ApkUpdateEntity> {
     /**
      * 单项更新不使用 notifyDataSetChanged();提升流畅度
      * 用于更新我们想要更新的item
+     * 用RecycleView实现会更加方便,大家可以自己去尝试。
      * <p/>
      **/
-    public void updateItem(ApkEntityWrappter apk) {
+    public void updateItem(ApkEntityWrapper apk) {
         try {
             int itemIndex = apkLists.indexOf(apk);
             // // 得到第1个可显示控件的位置,记住是第1个可显示控件噢。而不是第1个控件
@@ -155,7 +156,7 @@ public class AppListAdapter extends ListAdapter<ApkUpdateEntity> {
     public void setList(List<ApkUpdateEntity> list) {
         super.setList(list);
         for (ApkUpdateEntity entity : list) {
-            ApkEntityWrappter wapper = new ApkEntityWrappter(entity);
+            ApkEntityWrapper wapper = new ApkEntityWrapper(entity);
             DownloadInfo info = downloadApks.get(wapper.apkEntity.getMd5());
             if (info != null) {
                 wapper.setId(info.mId);
@@ -167,14 +168,14 @@ public class AppListAdapter extends ListAdapter<ApkUpdateEntity> {
 
     }
 
-    public static class ApkEntityWrappter {
+    public static class ApkEntityWrapper {
         static int NONE = -1;
         private long id = NONE;
         private int progress;
         private int state;
         private ApkUpdateEntity apkEntity;
 
-        public ApkEntityWrappter(ApkUpdateEntity apkEntity) {
+        public ApkEntityWrapper(ApkUpdateEntity apkEntity) {
             this.apkEntity = apkEntity;
         }
 
